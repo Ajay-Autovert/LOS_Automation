@@ -34,32 +34,29 @@ public class LoginUtility {
         if (!loginPage.isPasswordVisible()) {
             throw new RuntimeException("Password not visible after clicking show.");
         }
-
         loginPage.login(
         		PropertyFileReader.getValueProperty(emailKey),
         		PropertyFileReader.getValueProperty(passwordKey)
         );
-
         loginPage.clickHidePassword();
         loginPage.clickRememberMe();
         loginPage.clickSignInBtn();
-
         wait.until(ExpectedConditions.visibilityOf(loginPage.getTwoWheelerButton()));
         Reporter.log("Login Successful", true);
 
         // Role selection
         RoleSelectionPage roleSelectionPage = new RoleSelectionPage(driver);
-        wait.until(ExpectedConditions.visibilityOf(roleSelectionPage.selectSalesRole()));
-        roleSelectionPage.selectSalesRole();
-        roleSelectionPage.selectTwoWheeler();
-
-        new JavaScriptUtil(driver).jsScrollToBottomOfThePage();
+        RobotClassUtils.dismissPasswordPopup();
+        wait.until(ExpectedConditions.visibilityOf(roleSelectionPage.selectSuperAdminRole()));
+        Thread.sleep(1000);
+        roleSelectionPage.selectProductByText("2W");
         Thread.sleep(1000);
         roleSelectionPage.clickProceed();
-
+        
         // Validate home page loaded
         HomePage homePage = new HomePage(driver);
         wait.until(ExpectedConditions.visibilityOf(homePage.getDashboardBtn()));
+        Reporter.log("Role Selection is successfull", true);
         if (!driver.getCurrentUrl().contains("/app")) {
             throw new RuntimeException("Login failed or not redirected to home.");
         }

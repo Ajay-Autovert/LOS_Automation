@@ -5,9 +5,6 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.io.File;
-
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class TemplateClassPage {
 
+	@SuppressWarnings("unused")
 	private WebDriver driver;
     public TemplateClassPage(WebDriver driver) {
     	this.driver = driver; 
@@ -72,19 +70,19 @@ public class TemplateClassPage {
         statusDropdown.sendKeys(status);
     }
 
-    @FindBy(id = "data.template_product")
+    @FindBy(id = "data.event_data.product")
     private WebElement productDropdown;
     public void selectProduct(String product) {
         productDropdown.sendKeys(product);
     }
 
-    @FindBy(id = "data.workflow")
+    @FindBy(id = "data.event_data.workflow")
     private WebElement workflowDropdown;
 
-    @FindBy(id = "data.stage")
+    @FindBy(id = "data.event_data.stage")
     private WebElement stageDropdown;
 
-    @FindBy(id = "data.status")
+    @FindBy(id = "data.event_data.status")
     private WebElement templateStatusDropdown;
 
     @FindBy(id = "data.document_class")
@@ -181,6 +179,10 @@ public class TemplateClassPage {
         return createTemplateHeader.isDisplayed();
     }
 
+    public void selectTemplateProduct(String product) {
+    	productDropdown.sendKeys(product);
+    }
+    
     public void selectWorkflow(String workflow) {
         workflowDropdown.sendKeys(workflow);
     }

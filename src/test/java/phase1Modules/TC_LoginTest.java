@@ -1,7 +1,6 @@
 package phase1Modules;
 
 import java.time.Duration;
-
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -9,10 +8,10 @@ import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import genericLibrary.Base_Class;
+import genericLibrary.RobotClassUtils;
 import pomRepository.HomePage;
 import pomRepository.LoginPage;
 import pomRepository.RoleSelectionPage;
-import genericLibrary.JavaScriptUtil;
 
 public class TC_LoginTest extends Base_Class {
 
@@ -20,8 +19,8 @@ public class TC_LoginTest extends Base_Class {
     public void verifyValidLogin() throws InterruptedException {
     	
         // Read credentials from properties
-        String email = PropertyFileReader.getValueProperty("email_Sales");
-        String password = PropertyFileReader.getValueProperty("password_Sales");
+        String email = genericLibrary.PropertyFileReader.getValueProperty("email_Sales");
+        String password = genericLibrary.PropertyFileReader.getValueProperty("password_Sales");
 
         //Creating Login Page object
         LoginPage loginPage = new LoginPage(driver);
@@ -39,8 +38,8 @@ public class TC_LoginTest extends Base_Class {
         loginPage.clickHidePassword();
         loginPage.clickRememberMe();
         loginPage.clickSignInBtn();
-        
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2));
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOf(loginPage.getTwoWheelerButton()));	
         
         // Assertion after login - assuming Role-Selection page has some unique element
@@ -50,17 +49,20 @@ public class TC_LoginTest extends Base_Class {
         
         //Creating Role-Selection Page object
         RoleSelectionPage roleSelectionpage = new RoleSelectionPage(driver);
-        wait.until(ExpectedConditions.visibilityOf(roleSelectionpage.selectSalesRole()));	
-        roleSelectionpage.selectSalesRole();
-        roleSelectionpage.selectTwoWheeler();
+        Thread.sleep(2000);
+        wait.until(ExpectedConditions.visibilityOf(roleSelectionpage.selectSuperAdminRole()));	
+        roleSelectionpage.selectProductByText("2W");
         
-        //Scroll to Bottom of the page
-        JavaScriptUtil jsUtil = new JavaScriptUtil(driver);
-        jsUtil.jsScrollToBottomOfThePage();
+     // Clicking OK on the Chrome Password pop-up
+        RobotClassUtils.dismissPasswordPopup();
+        
+//        //Scroll to Bottom of the page
+//        JavaScriptUtil jsUtil = new JavaScriptUtil(driver);
+//        jsUtil.jsScrollToBottomOfThePage();
         
         //This is compulsory, both Implicit wait and 
         //Explicit wait not working on this for now
-        Thread.sleep(1000);
+        Thread.sleep(3000);
         roleSelectionpage.clickProceed();
         
         // Validate home page

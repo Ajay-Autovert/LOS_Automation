@@ -3,14 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="phase1Modules.TC_DocumentAndTemplateTest">
+      <class name="phase1Modules.TC_LeadCreation">
         <methods>
-          <include name="createDocumentAndAttachToTemplate"/>
           <include name="openTheBrowser"/>
           <include name="navigateToApplication"/>
+          <include name="createDocumentAndAttachToTemplate"/>
           <include name="closeTheBrowser"/>
         </methods>
-      </class> <!-- phase1Modules.TC_DocumentAndTemplateTest -->
+      </class> <!-- phase1Modules.TC_LeadCreation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
