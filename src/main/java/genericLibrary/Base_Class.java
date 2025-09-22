@@ -39,6 +39,9 @@ public class Base_Class implements FrameworkConstants {
 			options.addArguments("--disable-save-password-bubble");
 			options.addArguments("--disable-notifications");
 			options.addArguments("--guest"); // Open in Guest mode
+			options.addArguments("--headless=new");
+			options.addArguments("--no-sandbox");
+			options.addArguments("--disable-dev-shm-usage");
 			options.addArguments("--no-default-browser-check");
 			options.addArguments("--disable-infobars");
 			options.addArguments("--incognito"); // Important: prevent Google profile influence

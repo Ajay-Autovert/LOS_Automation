@@ -54,7 +54,7 @@ public class TC_LoginTest extends Base_Class {
         roleSelectionpage.selectProductByText("2W");
         
      // Clicking OK on the Chrome Password pop-up
-        RobotClassUtils.dismissPasswordPopup();
+        //RobotClassUtils.dismissPasswordPopup();
         
 //        //Scroll to Bottom of the page
 //        JavaScriptUtil jsUtil = new JavaScriptUtil(driver);
