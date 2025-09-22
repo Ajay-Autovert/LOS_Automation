@@ -2,10 +2,11 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="GalaxyHybridSuite" verbose="2" parallel="false">
 
-    <test name="LoginTest">
+    <test name="Phase1Tests">
         <classes>
-            <!-- Specify the fully qualified class name -->
-            <class name="phase1Modules"/>
+            <class name="phase1Modules.TC_LoginTest"/>
+            <class name="phase1Modules.TC_LeadCreation"/>
+            <class name="phase1Modules.TC_DocumentAndTemplateTest"/>
         </classes>
     </test>
 
