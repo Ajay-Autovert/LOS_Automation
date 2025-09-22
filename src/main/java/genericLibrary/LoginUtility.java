@@ -46,7 +46,6 @@ public class LoginUtility {
 
         // Role selection
         RoleSelectionPage roleSelectionPage = new RoleSelectionPage(driver);
-        RobotClassUtils.dismissPasswordPopup();
         wait.until(ExpectedConditions.visibilityOf(roleSelectionPage.selectSuperAdminRole()));
         Thread.sleep(1000);
         roleSelectionPage.selectProductByText("2W");

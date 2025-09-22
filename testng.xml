@@ -5,7 +5,7 @@
     <test name="LoginTest">
         <classes>
             <!-- Specify the fully qualified class name -->
-            <class name="phase1Modules.TC_LoginTest"/>
+            <class name="phase1Modules"/>
         </classes>
     </test>
 
