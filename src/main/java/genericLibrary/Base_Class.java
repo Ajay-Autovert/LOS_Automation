@@ -36,9 +36,9 @@ public class Base_Class implements FrameworkConstants {
 			WebDriverManager.chromedriver().clearDriverCache().setup();
 			
 			ChromeOptions options = new ChromeOptions();
-//			options.addArguments("--headless=new");
-//			options.addArguments("--no-sandbox");
-//			options.addArguments("--disable-dev-shm-usage");
+			options.addArguments("--headless=new");
+			options.addArguments("--no-sandbox");
+			options.addArguments("--disable-dev-shm-usage");
 			options.addArguments("--disable-save-password-bubble");
 			options.addArguments("--disable-notifications");
 			options.addArguments("--guest"); // Open in Guest mode
